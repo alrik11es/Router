@@ -19,7 +19,7 @@ raspberrypi where speed is everything.
 
 The next example shows what you can do with this router.
 
-´´´php
+```php
 <?php
 include('../vendor/autoload.php');
 
@@ -44,4 +44,4 @@ $routes = [
 $router = new \PHPico\Router();
 echo($router->execute($routes));
 
-´´´
+```
