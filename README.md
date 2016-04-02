@@ -53,10 +53,10 @@ echo($router->execute($routes));
 
 ```
 
-### REGEXP
+### Regular Expressions
 
-You can use the regexp you know. The only rule is that any REGEXP is launched
-if it where one like ```/^.......$/``` so you dont need to add the first/end
+You can use [PCRE](http://php.net/PCRE). The only rule is that any REGEXP is launched
+if it has ```/^.......$/``` so you don't need to add the first/end
 delimiter and the first/end slashes.
 
 ### The basic route
