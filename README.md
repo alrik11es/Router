@@ -1,5 +1,7 @@
 # Router
 
+[![Join the chat at https://gitter.im/PHPico/Router](https://badges.gitter.im/PHPico/Router.svg)](https://gitter.im/PHPico/Router?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The PHPico Router is probably the smallest fully featured
 PHP Router for web applications ever built.
 
