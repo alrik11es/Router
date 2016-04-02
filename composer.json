@@ -1,4 +1,11 @@
 {
+    "name": "phpico/router",
+    "description": "Probably the smallest fully featured PHP Router for web applications ever built",
+    "keywords": [
+        "router"
+    ],
+    "type": "library",
+    "license": "MIT",
     "require": {
         "php" : ">=5.4.0"
     },

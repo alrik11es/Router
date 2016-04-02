@@ -4,7 +4,7 @@ namespace PHPico;
 class Router {
 
     /**
-     * Get the base from any possible base
+     * Get the base from any possible url
      * return string
      */
     private function base()
