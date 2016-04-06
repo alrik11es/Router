@@ -1,6 +1,7 @@
 # Router
 
 [![Join the chat at https://gitter.im/PHPico/Router](https://badges.gitter.im/PHPico/Router.svg)](https://gitter.im/PHPico/Router?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/PHPico/Router.svg?branch=master)](https://travis-ci.org/PHPico/Router)
 
 The PHPico Router is probably the smallest fully featured
 PHP Router for web applications ever built.
@@ -127,7 +128,7 @@ and effective.
 
 ```php
 <?php
-if($router->execute($routes) === false){
+if($router->dispatch($routes) === false){
     header("HTTP/1.0 404 Not Found");
     die('Not found');
 }
