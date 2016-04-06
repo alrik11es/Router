@@ -32,4 +32,4 @@ $routes = [
 ];
 
 $router = new \PHPico\Router();
-echo($router->execute($routes));
+echo($router->dispatch($routes));

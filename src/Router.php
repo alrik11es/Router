@@ -7,7 +7,7 @@ class Router {
      * Get the base from any possible url
      * return string
      */
-    private function base()
+    public function base()
     {
         $b = strtr($_SERVER['SCRIPT_NAME'], ['index.php'=>'']);
         return strtr($_SERVER['REQUEST_URI'], [$b => '/']);
@@ -24,42 +24,43 @@ class Router {
      * @var $routes array The routes array
      * @return string|false
      */
-    public function execute($routes)
+    public function dispatch($routes)
     {
         $result = null;
-        foreach($routes as $regex => $route){
-            if(is_string($route)){
-                $result = $this->request($regex, $route);
-            } else if(is_array($route)){
-                foreach($route as $conf){
-                    if($conf === $_SERVER['REQUEST_METHOD']){
-                        $result = $this->request($regex, end($route));
-                    }
-                }
-            }
+        foreach($routes as $regex => $callable){
+            $result = $this->execute($regex, $callable);
             if($result !== false) return $result;
         }
         return false;
     }
     
     /**
-     * Forge the request for this regex and the route params. Could be a callable.
+     * Executes the request this regex and the route params. Could be a callable.
      * @var $regex string The regex
      * @var $route string|callable The route to be executed
      * return string|boolean The result
      */
-    private function request($regex, $route){
-        if(preg_match('/^'.$regex.'$/', $this->base(), $matches)){
-            if(is_callable($route)){
-                return call_user_func_array($route, $matches);
+    public function execute($regex, $callable)
+    {
+        if(is_array($callable)){
+            $callable = end($callable);
+            foreach($callable as $conf){
+                if($conf !== $_SERVER['REQUEST_METHOD']) return false;
             }
+        }
+        
+        if(preg_match('/^'.$regex.'$/', $this->base(), $matches)){
             
             array_shift($matches);
             
-            list($class, $method) = explode('@', $route);
+            if(is_callable($callable)){
+                return call_user_func_array($callable, $matches);
+            }
             
-            $method = !preg_match('/\@/', $route) ? 'index' : $method ;
-            $class = class_exists($class) ? $class : $route;
+            list($class, $method) = explode('@', $callable);
+            
+            $method = !preg_match('/\@/', $callable) ? 'index' : $method ;
+            $class = class_exists($class) ? $class : $callable;
 
             $c = new $class();
             return call_user_func_array(array($c, $method), $matches);

@@ -49,14 +49,14 @@ $routes = [
 ];
 
 $router = new \PHPico\Router();
-echo($router->execute($routes));
+echo($router->dispatch($routes));
 
 ```
 
 ### Regular Expressions
 
 You can use [PCRE](http://php.net/PCRE). The only rule is that any REGEXP is launched
-if it has ```/^.......$/``` so you don't need to add the first/end
+as if it has ```/^.......$/``` so you don't need to add the first/end
 delimiter and the first/end slashes.
 
 ### The basic route
