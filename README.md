@@ -1,7 +1,13 @@
 # Router
 
 [![Join the chat at https://gitter.im/PHPico/Router](https://badges.gitter.im/PHPico/Router.svg)](https://gitter.im/PHPico/Router?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/PHPico/Router.svg?branch=master)](https://travis-ci.org/PHPico/Router)
+[![Latest Version](https://img.shields.io/github/release/PHPico/Router.svg?style=flat-square)](https://github.com/PHPico/Router/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://img.shields.io/travis/PHPico/Router/master.svg?style=flat-square)](https://travis-ci.org/PHPico/Router)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/PHPico/Router.svg?style=flat-square)](https://scrutinizer-ci.com/g/PHPico/Router/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/PHPico/Router.svg?style=flat-square)](https://scrutinizer-ci.com/g/PHPico/Router)
+[![Total Downloads](https://img.shields.io/packagist/dt/PHPico/Router.svg?style=flat-square)](https://packagist.org/packages/PHPico/Router)
+
 
 The PHPico Router is probably the smallest fully featured
 PHP Router for web applications ever built.
