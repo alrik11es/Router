@@ -43,8 +43,7 @@ class Router {
     public function execute($regex, $callable)
     {
         if(is_array($callable)){
-            $callable = end($callable);
-            foreach($callable as $conf){
+            foreach(end($callable) as $conf){
                 if($conf !== $_SERVER['REQUEST_METHOD']) return false;
             }
         }
@@ -62,8 +61,7 @@ class Router {
             $method = !preg_match('/\@/', $callable) ? 'index' : $method ;
             $class = class_exists($class) ? $class : $callable;
 
-            $c = new $class();
-            return call_user_func_array(array($c, $method), $matches);
+            return call_user_func_array(array(new $class(), $method), $matches);
         }
         return false;
     }
