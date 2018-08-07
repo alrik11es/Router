@@ -3,11 +3,11 @@
 include('../vendor/autoload.php');
 
 class HomeController{
-    
+
     function index(){
         return 'Hello people <form action="greeting/man" method="POST"><input type="Submit"></form>';
     }
-    
+
     function greet($a){
         return 'Hello '.$a;
     }
@@ -15,11 +15,11 @@ class HomeController{
 }
 
 class BookController{
-    
+
     function show($a){
         return 'Book => '.$a;
     }
-    
+
 }
 
 $routes = [

@@ -12,7 +12,7 @@ class Router {
         $b = strtr($_SERVER['SCRIPT_NAME'], ['index.php'=>'']);
         return strtr($_SERVER['REQUEST_URI'], [$b => '/']);
     }
-    
+
     /**
      * Executes an array of routes. Should be properly formatted:
      * ['regex'=>'class@method']
@@ -20,7 +20,7 @@ class Router {
      * By default index() method will be taken.
      * No need of /^...$/ inside of regex.
      * Returns false if route not found.
-     * 
+     *
      * @var $routes array The routes array
      * @return string|false
      */
@@ -33,7 +33,7 @@ class Router {
         }
         return false;
     }
-    
+
     /**
      * Executes the request this regex and the route params. Could be a callable.
      * @var $regex string The regex
@@ -47,17 +47,17 @@ class Router {
                 if($conf !== $_SERVER['REQUEST_METHOD']) return false;
             }
         }
-        
+
         if(preg_match('/^'.$regex.'$/', $this->base(), $matches)){
-            
+
             array_shift($matches);
-            
+
             if(is_callable($callable)){
                 return call_user_func_array($callable, $matches);
             }
-            
+
             list($class, $method) = explode('@', $callable);
-            
+
             $method = !preg_match('/\@/', $callable) ? 'index' : $method ;
             $class = class_exists($class) ? $class : $callable;
 

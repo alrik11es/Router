@@ -1,13 +1,13 @@
 <?php
 
 class RouterTest extends PHPUnit_Framework_TestCase {
-    
+
     const TEST_PASSED = 'TEST PASSED';
-    
+
     public function response01(){
         return self::TEST_PASSED;
     }
-    
+
     public function routesProvider()
     {
        return [
@@ -17,7 +17,7 @@ class RouterTest extends PHPUnit_Framework_TestCase {
             ['/page/1', 'GET','\/page\/(.*)', function($a){ return $a; }, '1'], // Callback with params
         ];
     }
-    
+
     public function getRouter($url)
     {
              // Create a stub for the SomeClass class.
@@ -31,20 +31,20 @@ class RouterTest extends PHPUnit_Framework_TestCase {
 
         return $stub;
     }
-    
+
     /**
      * @dataProvider routesProvider
      */
     public function testRoutes($location, $method, $regexp, $callable, $expected_result)
     {
         $_SERVER['REQUEST_METHOD'] = $method;
-        
+
         $r = $this->getRouter($location);
         $result = $r->execute($regexp, $callable);
         $this->assertEquals($expected_result, $result);
     }
-    
-    
+
+
     public function locationsProvider()
     {
         return [
@@ -53,10 +53,10 @@ class RouterTest extends PHPUnit_Framework_TestCase {
             ['/pages', self::TEST_PASSED],
             ['/page/25', 25],
             ['/page/12', 12],
-            
+
         ];
     }
-    
+
     /**
      * @dataProvider locationsProvider
      */
@@ -67,7 +67,7 @@ class RouterTest extends PHPUnit_Framework_TestCase {
             '\/pages' => 'RouterTest@response01',
             '\/' => 'RouterTest@response01', // Basic home page
         ];
-            
+
         $r = $this->getRouter($location);
         $this->assertEquals($expected_result, $r->dispatch($routes));
     }

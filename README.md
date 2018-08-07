@@ -41,7 +41,7 @@ class HomeController{
     function index(){
         return 'Hello people';
     }
-    
+
     function greet($a){
         return 'Hello '.$a;
     }
@@ -98,7 +98,7 @@ $routes = [
 ```
 
 As you can see you can add params in order to get the capture of the REGEXP.
-```(.*)``` Means capture any character, zero or more times. 
+```(.*)``` Means capture any character, zero or more times.
 Then just add the ```$a``` var to recover this capture.
 
 ### HTTP Request type segmentation
