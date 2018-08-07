@@ -1,25 +1,26 @@
 <?php
 
-include('../vendor/autoload.php');
+include ___DIR__ . '/../vendor/autoload.php';
 
-class HomeController{
-
-    function index(){
+class HomeController
+{
+    function index()
+    {
         return 'Hello people <form action="greeting/man" method="POST"><input type="Submit"></form>';
     }
 
-    function greet($a){
-        return 'Hello '.$a;
+    function greet($a)
+    {
+        return 'Hello ' . $a;
     }
-
 }
 
-class BookController{
-
-    function show($a){
-        return 'Book => '.$a;
+class BookController
+{
+    function show($a)
+    {
+        return 'Book => ' . $a;
     }
-
 }
 
 $routes = [
