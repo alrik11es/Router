@@ -62,6 +62,8 @@ class Router
             }
         }
 
+        $regex = \str_replace('/', '\/', $regex);
+
         return $this->handle($regex, $callable);
     }
 
