@@ -24,13 +24,12 @@ class BookController
 }
 
 $routes = [
-    '\/annon' => ['GET', function(){
-        return "Oh yeah callbacks :D";
+    '/annon' => ['GET', function() {
+        return 'Oh yeah callbacks :D';
     }],
-    '\/greeting\/(.*)' => ['GET', 'HomeController@greet'],
-    '\/book\/([0-9]*)' => 'BookController@show',
-    '\/' => 'HomeController'
+    '/greeting/(.*)' => ['GET', 'HomeController@greet'],
+    '/book/([0-9]*)' => 'BookController@show',
+    '/' => 'HomeController'
 ];
 
-$router = new \PHPico\Router();
-echo($router->dispatch($routes));
+echo (new \PHPico\Router)->dispatch($routes);
