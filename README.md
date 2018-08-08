@@ -56,7 +56,6 @@ $routes = [
         return 'Oh yeah callbacks :D';
     }],
     '/greeting/(.*)' => ['GET', 'HomeController@greet'],
-    '/book/([0-9]*)' => 'BookController@show',
     '/' => 'HomeController'
 ];
 
