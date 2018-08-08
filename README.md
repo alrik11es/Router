@@ -35,29 +35,31 @@ The next example shows what you can do with this router.
 
 ```php
 <?php
-include('../vendor/autoload.php');
 
-class HomeController{
-    function index(){
+// include ___DIR__ . '/../vendor/autoload.php';
+
+class HomeController
+{
+    function index()
+    {
         return 'Hello people';
     }
-    
-    function greet($a){
-        return 'Hello '.$a;
+
+    function greet($a)
+    {
+        return 'Hello ' . $a;
     }
 }
 
 $routes = [
-    '\/greet\/(.*)' => ['POST', function(){
-        return "Oh yeah callbacks :D";
+    '/annon' => ['GET', function() {
+        return 'Oh yeah callbacks :D';
     }],
-    '\/greet\/(.*)' => ['GET', 'HomeController@greet'],
-    '\/' => 'HomeController'
+    '/greeting/(.*)' => ['GET', 'HomeController@greet'],
+    '/' => 'HomeController'
 ];
 
-$router = new \PHPico\Router();
-echo($router->dispatch($routes));
-
+echo (new \PHPico\Router)->dispatch($routes);
 ```
 
 ### Regular Expressions
@@ -71,9 +73,8 @@ delimiter and the first/end slashes.
 There are multiple ways to create a route. But the basic one is this:
 
 ```php
-<?php
 $routes = [
-    '\/' => 'HomeController'
+    '/' => 'HomeController'
 ];
 
 ```
@@ -88,9 +89,8 @@ You can use any callable to be used as destination.
 For example this anonymous function:
 
 ```php
-<?php
 $routes = [
-    '\/greet\/(.*)' => function($a){
+    '/greet/(.*)' => function($a){
         return "Hello ".$a;
     },
 ];
@@ -98,7 +98,7 @@ $routes = [
 ```
 
 As you can see you can add params in order to get the capture of the REGEXP.
-```(.*)``` Means capture any character, zero or more times. 
+```(.*)``` Means capture any character, zero or more times.
 Then just add the ```$a``` var to recover this capture.
 
 ### HTTP Request type segmentation
@@ -107,9 +107,8 @@ By default any route unless specified will allow any type of request.
 But you can segment the route for one or more specific requests. For example:
 
 ```php
-<?php
 $routes = [
-    '\/' => ['POST','HomeController']
+    '/' => ['POST','HomeController']
 ];
 
 ```
@@ -120,9 +119,8 @@ a POST request.
 You can even add more than one option, like:
 
 ```php
-<?php
 $routes = [
-    '\/' => ['GET', 'POST','HomeController']
+    '/' => ['GET', 'POST', 'HomeController']
 ];
 
 ```
@@ -133,14 +131,14 @@ The router component will return false if the route is not found. Simple
 and effective.
 
 ```php
-<?php
-if($router->dispatch($routes) === false){
+if ($router->dispatch($routes) === false) {
     header("HTTP/1.0 404 Not Found");
     die('Not found');
 }
 ```
 
 ## Have any idea on how to improve?
+
 If you have any idea of how to improve this library you're welcome to
 submit a pull request with your improvement or fix. Remember that the
 idea is to keep the codebase the smallest possible.
